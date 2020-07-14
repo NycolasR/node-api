@@ -1,21 +1,15 @@
-const express = require('express'); // retorna uma função
+const express = require('express');
+const mongoose = require('mongoose');
 
-const app = express(); // executa a dita função
+// Iniciando o App
+const app = express();
 
-/* 
-.get(string, function) : método executado sempre que a rota
-especificada for acessada.
+// Iniciando o DB
+mongoose.connect('mongodb://localhost:27017/nodeapi', { useNewUrlParser: true, useUnifiedTopology: true });
 
-'/': rota raiz.
-
-req (requisição) feita ao servidor: contém todos os detalhes
-e informações possíveis desta requisição (parâmetros, corpo e
-cabeçalho da requisição, usuário, autênticação, IP, etc...) 
-
-res (resposta) dada à requisição
-*/
+// Primeira rota
 app.get('/', (req, res) => {
-    res.send('Hello, Nycolas.');
+    res.send('Hello, Nycolas R. Alves da Silva');
 });
 
-app.listen(3001); // para a aplicação ouvir a porta 3001 do navegador
+app.listen(3001);
