@@ -13,7 +13,7 @@ const ProductSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    createdAt: {
+    createdAt: { // Coluna preenchida automaticamente
         type: Date,
         default: Date.now,
     }
