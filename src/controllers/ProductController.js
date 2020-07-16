@@ -8,7 +8,15 @@ const Product = mongoose.model('Product');
 
 module.exports = {
     async index(req, res) {
-        const products = await Product.find(); // Sem parâmetros para buscar todos
+        const { page = 1 } = req.query;
+        // Recuperando o número da página requerido
+        // por meio da desestruturação de objetos.
+        // 1: valor default
+
+        const products = await Product.paginate({  }, { page, limit: 10 });
+        // {  }: Sem parâmetros para buscar todos
+        // { page: 1, limit: 10 }: page é referente à página atual e
+        // limit é referente ao tamanho da página
 
         return res.json(products) // Retornando em uma estrutura JSON
     },
